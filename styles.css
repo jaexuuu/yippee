@@ -1,0 +1,204 @@
+:root {
+  --page-bg: #f4efe6;
+  --ink: #1d2c3a;
+  --paper: #fffaf2;
+  --sky: #f5d7a6;
+  --card-shadow: rgba(24, 31, 40, 0.2);
+  --accent: #d65f5f;
+  --accent-dark: #8a3c3c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Playpen Sans Arabic", "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(180deg, #f1ebdf 0%, #e8d9c0 100%);
+  color: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.page-shell {
+  width: min(92vw, 760px);
+  display: grid;
+  place-items: center;
+}
+
+.postcard {
+  width: min(86vw, 540px);
+  aspect-ratio: 3363 / 4350;
+  max-width: 540px;
+  perspective: 1600px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  outline: none;
+}
+
+.postcard:focus-visible {
+  box-shadow: 0 0 0 4px rgba(50, 94, 143, 0.35);
+  border-radius: 24px;
+}
+
+.postcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.postcard.is-flipped .postcard-inner {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 32px rgba(32, 28, 26, 0.18);
+  border: 1px solid rgba(67, 53, 45, 0.18);
+}
+
+.card-front {
+  background: linear-gradient(180deg, #f8f5ee 0%, #efe5d7 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-back {
+  background:
+    linear-gradient(rgba(255,255,255,0.16), rgba(255,255,255,0.08)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(120, 93, 70, 0.03),
+      rgba(120, 93, 70, 0.03) 2px,
+      rgba(255, 255, 255, 0.06) 2px,
+      rgba(255, 255, 255, 0.06) 4px
+    ),
+    linear-gradient(160deg, #fffdf9 0%, #f5ead9 100%);
+  transform: rotateY(180deg);
+  padding: 1.5rem 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.front-header,
+.letter-header,
+.signature-row,
+.front-details {
+  display: none;
+}
+
+.postmark {
+  opacity: 0.8;
+}
+
+.stamp {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(214, 95, 95, 0.12);
+  color: var(--accent-dark);
+  font-size: 1.2rem;
+  border: 1px dashed rgba(138, 60, 60, 0.4);
+}
+
+.card-front img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f5f1ea;
+  padding: 0;
+  filter: saturate(1.06) contrast(1.02);
+}
+
+.front-details {
+  padding: 1rem 1.1rem 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.front-details p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.front-details span {
+  opacity: 0.7;
+  font-size: 0.78rem;
+}
+
+.letter-header {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(29, 44, 58, 0.15);
+  color: rgba(29, 44, 58, 0.8);
+}
+
+.letter-body {
+  padding: 1.2rem 0.55rem 0.9rem;
+  line-height: 1.55;
+  font-size: 0.84rem;
+  color: var(--ink);
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.letter-body p {
+  margin: 0 0 0.8rem;
+}
+
+.signature-row {
+  border-top: 1px solid rgba(29, 44, 58, 0.15);
+  padding-top: 0.9rem;
+  font-style: italic;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.signature-row strong {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+  .postcard {
+    width: min(90vw, 380px);
+  }
+
+  .card-back {
+    padding: 1.2rem 1.1rem 1rem;
+  }
+
+  .letter-body {
+    font-size: 0.76rem;
+    line-height: 1.55;
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+  }
+
+  .signature-row {
+    font-size: 0.72rem;
+  }
+}
