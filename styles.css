@@ -141,7 +141,7 @@ body {
 }
 
 .card-front {
-  background: linear-gradient(180deg, #f8f5ee 0%, #efe5d7 100%);
+  background: #f5f1ea;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -193,9 +193,11 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
   background: #f5f1ea;
   padding: 0;
+  margin: 0;
   filter: saturate(1.06) contrast(1.02);
 }
 
