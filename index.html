@@ -14,7 +14,21 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page-shell">
+    <div class="password-screen" id="password-screen">
+      <div class="password-panel">
+        <h3>hi c:</h3>
+        <input
+          id="password-input"
+          type="password"
+          placeholder="password?"
+          aria-label="Password"
+        />
+        <button id="unlock-button" type="button">yippee</button>
+        <p id="password-error" class="password-error" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <main class="page-shell app-hidden" id="page-shell">
       <div class="postcard" id="postcard" tabindex="0" aria-label="Flip postcard" role="button">
         <div class="postcard-inner">
           <div class="card-face card-front">
